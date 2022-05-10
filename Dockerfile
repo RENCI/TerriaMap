@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y gdal-bin
 RUN apt-get install -yq vim
 
 # create the non-root user
-RUN useradd -m -d /home/nru -u 1000 nru
+#RUN useradd -m -d /home/nru -u 1000 nru
 
 # create some needed dirs for the content
 # this was in the original dockerfile so i kept it.
@@ -37,7 +37,7 @@ RUN yarn config set unsafe-perm true
 RUN yarn policies set-version 1.22.17
 
 # change to that user
-USER nru
+USER 1000
 
 # install yarn and build up the node_modules dir
 RUN yarn install
