@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y gdal-bin
 RUN apt-get install -yq vim
 
 # create the non-root user
-RUN useradd -m -d /home/nru -u 1001 nru
+RUN useradd -m -d /home/nru -u 1000 nru
 
 # create some needed dirs for the content
 # this was in the original dockerfile so i kept it.
