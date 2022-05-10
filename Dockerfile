@@ -26,9 +26,6 @@ COPY . /home/nru/usr/src/app
 # make sure everything is readable
 RUN chmod 777 -R /home/nru
 
-# change to that user
-USER nru
-
 # need this for large web sites
 RUN export NODE_OPTIONS=--max_old_space_size=4096
 
@@ -36,8 +33,17 @@ RUN export NODE_OPTIONS=--max_old_space_size=4096
 RUN yarn config set user 0
 RUN yarn config set unsafe-perm true
 
+# get a specific version of yarn
+RUN yarn policies set-version 1.22.17
+
+# change to that user
+USER nru
+
 # install yarn and build up the node_modules dir
 RUN yarn install
+
+# create the "build" dir/files
+RUN npm run gulp build
 
 # expose the web server port
 EXPOSE 3001
