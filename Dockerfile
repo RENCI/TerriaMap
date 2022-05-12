@@ -45,6 +45,12 @@ RUN yarn install
 # create the "build" dir/files
 RUN npm run gulp build
 
+# remove the file we will turn into a symbolic link
+RUN rm /home/nru/usr/src/app/wwwroot/init/apsviz.json
+
+# make a symbolic link to the apsviz.json file
+RUN ln -s /fileserver/terria-map/apsviz.json /home/nru/usr/src/app/wwwroot/init/apsviz.json
+
 # expose the web server port
 EXPOSE 3001
 
