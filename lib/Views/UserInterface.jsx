@@ -1,20 +1,20 @@
 import {
   MenuLeft,
-  Nav,
+  //* Nav,
   ExperimentalMenu
 } from "terriajs/lib/ReactViews/StandardUserInterface/customizable/Groups";
-import MenuItem from "terriajs/lib/ReactViews/StandardUserInterface/customizable/MenuItem";
+//* import MenuItem from "terriajs/lib/ReactViews/StandardUserInterface/customizable/MenuItem";
 import PropTypes from "prop-types";
 import React from "react";
-import RelatedMaps from "./RelatedMaps";
-import SplitPoint from "terriajs/lib/ReactViews/SplitPoint";
+//* import RelatedMaps from "./RelatedMaps";
+//* import SplitPoint from "terriajs/lib/ReactViews/SplitPoint";
 import StandardUserInterface from "terriajs/lib/ReactViews/StandardUserInterface/StandardUserInterface";
 import SearchByDay from "./SearchByDay";
 import SearchByType from "./SearchByType";
 import SearchByGrid from "./SearchByGrid";
 
 // import SplitPoint from "terriajs/lib/ReactViews/SplitPoint";
-import StandardUserInterface from "terriajs/lib/ReactViews/StandardUserInterface/StandardUserInterface";
+// import StandardUserInterface from "terriajs/lib/ReactViews/StandardUserInterface/StandardUserInterface";
 import version from "../../version";
 
 import "./global.scss";
