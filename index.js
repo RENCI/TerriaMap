@@ -47,14 +47,15 @@ registerCustomComponentTypes(terria);
 
 // Create the ViewState before terria.start so that errors have somewhere to go.
 const viewState = new ViewState({
-    terria: terria 
+    terria: terria
 });
 
-// Set overrides for data catalog button text and search placeholder text in explorer window 
+// Set overrides for data catalog button text and search placeholder text in explorer window
 viewState.searchPlaceholder = "Search this catalog"
 viewState.dataCatalogButtonTitle = "Data Catalog"
 
 registerCatalogMembers();
+
 
 if (process.env.NODE_ENV === "development") {
     window.viewState = viewState;
@@ -73,11 +74,20 @@ module.exports = terria.start({
     configUrl: 'config.json',
     shareDataService: new ShareDataService({
         terria: terria
-    })
+    }),
+    beforeRestoreAppState: () => {
+      // Load plugins before restoring app state because app state may
+      // reference plugin components and catalog items.
+      return loadPlugins(viewState, plugins).catch(error => {
+        console.error(`Error loading plugins`);
+        console.error(error);
+      });
+    }
 }).catch(function(e) {
   terria.raiseErrorToUser(e);
 }).finally(function() {
     terria.loadInitSources().then(result => result.raiseError(terria));
+
     try {
         viewState.searchState.locationSearchProviders = [
             new BingMapsSearchProviderViewModel({
@@ -127,6 +137,15 @@ module.exports = terria.start({
 
         // add useCesiumIonBingImagery
         terria.configParameters.useCesiumIonBingImagery = true;
+
+        // Add font-imports
+        const fontImports = terria.configParameters.theme?.fontImports;
+        if (fontImports) {
+          const styleSheet = document.createElement("style");
+          styleSheet.type = "text/css";
+          styleSheet.innerText = fontImports;
+          document.head.appendChild(styleSheet);
+        }
 
         render(terria, [], viewState);
     } catch (e) {
