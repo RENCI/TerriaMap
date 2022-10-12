@@ -1,0 +1,16 @@
+{
+  "workbench": [],
+  "catalog": [],
+  "corsDomains": [
+    "corsproxy.com",
+    "programs.communications.gov.au",
+    "www.asris.csiro.au",
+    "mapsengine.google.com"
+  ],
+  "homeCamera": {
+    "west": -96,
+    "south": 20,
+    "east": -61,
+    "north": 46
+  }
+}
