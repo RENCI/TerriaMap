@@ -1,7 +1,9 @@
+import PropTypes from "prop-types";
+import React from "react";
+import RelatedMaps from "terriajs/lib/ReactViews/RelatedMaps/RelatedMaps";
 import {
-  MenuLeft,
-  Nav,
-  ExperimentalMenu
+  ExperimentalMenu,
+  MenuLeft
 } from "terriajs/lib/ReactViews/StandardUserInterface/customizable/Groups";
 // import MenuItem from "terriajs/lib/ReactViews/StandardUserInterface/customizable/MenuItem";
 import PropTypes from "prop-types";
@@ -12,6 +14,7 @@ import SearchByGrid from "./SearchByGrid";
 import SearchByInstance from "./SearchByInstance";
 
 // import SplitPoint from "terriajs/lib/ReactViews/SplitPoint";
+import MenuItem from "terriajs/lib/ReactViews/StandardUserInterface/customizable/MenuItem";
 import StandardUserInterface from "terriajs/lib/ReactViews/StandardUserInterface/StandardUserInterface";
 import version from "../../version";
 import "./global.scss";
@@ -29,6 +32,8 @@ import "./global.scss";
 //   return /Android|iPhone|iPad/i.test(navigator.userAgent);
 // }
 export default function UserInterface(props) {
+  const relatedMaps = props.viewState.terria.configParameters.relatedMaps;
+
   return (
     <StandardUserInterface {...props} version={version}>
       <MenuLeft>
@@ -37,6 +42,10 @@ export default function UserInterface(props) {
         <SearchByGrid viewState={props.viewState} />
         <SearchByInstance viewState={props.viewState} />
         <SearchByDay viewState={props.viewState} />
+        <MenuItem caption="About" href="about.html" key="about-link" />
+        {relatedMaps && relatedMaps.length > 0 ? (
+          <RelatedMaps relatedMaps={relatedMaps} />
+        ) : null}
       </MenuLeft>
       <ExperimentalMenu>
         {/* <If condition={isBrowserSupportedAV()}>
