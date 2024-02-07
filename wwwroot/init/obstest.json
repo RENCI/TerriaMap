@@ -1,0 +1,480 @@
+{
+  "workbench": ["4526-2023091100-coampsforecast-obs"],
+  "corsDomains": [
+    "corsproxy.com",
+    "programs.communications.gov.au",
+    "www.asris.csiro.au",
+    "mapsengine.google.com"
+  ],
+  "homeCamera": {
+    "east": -61,
+    "west": -80,
+    "north": 45,
+    "south": 7
+  },
+  "baseMaps": {
+    "items": [
+      {
+        "item": {
+          "id": "basemap-bing-aerial-with-labels",
+          "name": "Bing Maps Aerial with Labels",
+          "type": "bing-maps",
+          "opacity": 1,
+          "mapStyle": "AerialWithLabelsOnDemand"
+        },
+        "image": "images/basemaps/us/bing-aerial-labels.png",
+        "contrastColor": "#ffffff"
+      },
+      {
+        "item": {
+          "id": "basemap-bing-aerial",
+          "name": "Bing Maps Aerial",
+          "type": "bing-maps",
+          "opacity": 1,
+          "mapStyle": "Aerial"
+        },
+        "image": "images/basemaps/us/bing-aerial.png",
+        "contrastColor": "#ffffff"
+      },
+      {
+        "item": {
+          "id": "basemap-bing-roads",
+          "name": "Bing Maps Roads",
+          "type": "bing-maps",
+          "opacity": 1,
+          "mapStyle": "RoadOnDemand"
+        },
+        "image": "images/basemaps/us/bing-maps-roads.png",
+        "contrastColor": "#000000"
+      },
+      {
+        "item": {
+          "id": "basemap-natural-earth-II",
+          "url": "https://storage.googleapis.com/terria-datasets-public/basemaps/natural-earth-tiles/{z}/{x}/{reverseY}.png",
+          "name": "Natural Earth II",
+          "type": "url-template-imagery",
+          "opacity": 1,
+          "attribution": "<a href='https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-2/'>Natural Earth II</a> - From Natural Earth. <a href='https://www.naturalearthdata.com/about/terms-of-use/'>Public Domain</a>.",
+          "maximumLevel": 7
+        },
+        "image": "images/basemaps/us/natural-earth.png",
+        "contrastColor": "#000000"
+      },
+      {
+        "item": {
+          "id": "basemap-black-marble",
+          "url": "http://geoserver.nationalmap.nicta.com.au/imagery/nasa-black-marble/wms",
+          "name": "NASA Black Marble",
+          "type": "wms",
+          "layers": "nasa-black-marble:dnb_land_ocean_ice.2012.54000x27000_geo",
+          "opacity": 1,
+          "attribution": "<a href='https://earthobservatory.nasa.gov/Features/NightLights'>Black Marble</a> - From NASA's Earth Observatory. <a href='https://earthobservatory.nasa.gov/image-use-policy'>Use Policy</a>."
+        },
+        "image": "images/basemaps/us/black-marble.png",
+        "contrastColor": "#ffffff"
+      },
+      {
+        "item": {
+          "id": "basemap-positron",
+          "url": "https://basemaps.cartocdn.com/light_all/",
+          "name": "Positron (Light)",
+          "type": "open-street-map",
+          "opacity": 1,
+          "subdomains": ["a", "b", "c", "d"],
+          "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>, © <a href='https://carto.com/about-carto/'>CARTO</a>"
+        },
+        "image": "images/basemaps/us/positron.png",
+        "contrastColor": "#000000"
+      },
+      {
+        "item": {
+          "id": "basemap-darkmatter",
+          "url": "https://basemaps.cartocdn.com/dark_all/",
+          "name": "Dark Matter",
+          "type": "open-street-map",
+          "opacity": 1,
+          "subdomains": ["a", "b", "c", "d"],
+          "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>, © <a href='https://carto.com/about-carto/'>CARTO</a>"
+        },
+        "image": "images/basemaps/us/dark-matter.png",
+        "contrastColor": "#ffffff"
+      }
+    ],
+    "defaultBaseMapId": "basemap-bing-roads"
+  },
+  "viewerMode": "2D",
+  "catalog": [
+    {
+      "id": "2023-09-11",
+      "name": "ADCIRC Data - Run Date: 09-11-2023",
+      "type": "group",
+      "members": [
+        {
+          "id": "4526-2023091100-coampsforecast-obs",
+          "show": true,
+          "name": "Observations - Date: 09-11-2023 Cycle: 00 Type: coampsforecast Location: PSC Instance: nopp_hsofs_coamps_13L ADCIRC Grid: hsofs",
+          "description": "This data is produced by the ADCIRC model and presented through the ADCIRC Prediction System Visualizer",
+          "dataCustodian": "RENCI",
+          "type": "wms",
+          "layers": "ADCIRC_2023:4526-2023091100-coampsforecast_station_properies_view",
+          "legends": [
+            {
+              "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/ows?service=WMS&request=GetLegendGraphic&TRANSPARENT=TRUE&format=image%2Fpng&LEGEND_OPTIONS=fontColor:0x000000&layer=4526-2023091100-coampsforecast_station_properies_view",
+              "urlMimeType": "image/png"
+            }
+          ],
+          "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/wfs/ADCIRC_2023?service=wfs&version=1.3.0&request=GetCapabilities",
+          "featureInfoTemplate": {
+            "template": "<div><chart title='>' sources='{{csvurl}}' column-units='APS Forecast:Meters,APS Nowcast:Meters,Observations:Meters,Difference (APS-Obs):Meters,NOAA Tidal Predictions:Meters' column-titles='APS Forecast:APS Forecast,APS Nowcast:APS Nowcast,Observations:Observations,Difference (APS-Obs):Difference (APS-Obs),NOAA Tidal Predictions:NOAA Tidal Predictions'></chart></div>"
+          },
+          "info": [
+            {
+              "name": "Advisory",
+              "content": "2023091100",
+              "show": false
+            },
+            {
+              "name": "Cycle",
+              "content": "00",
+              "show": false
+            },
+            {
+              "name": "Ensemble Member",
+              "content": "coampsforecast",
+              "show": false
+            },
+            {
+              "name": "Event Date",
+              "content": "230911",
+              "show": false
+            },
+            {
+              "name": "Event Type",
+              "content": "coampsforecast",
+              "show": false
+            },
+            {
+              "name": "Grid Type",
+              "content": "hsofs",
+              "show": false
+            },
+            {
+              "name": "Instance Name",
+              "content": "nopp_hsofs_coamps_13L",
+              "show": false
+            },
+            {
+              "name": "Location",
+              "content": "PSC",
+              "show": false
+            },
+            {
+              "name": "Meteorological Model",
+              "content": "None",
+              "show": false
+            },
+            {
+              "name": "Storm Name",
+              "content": "LEE",
+              "show": false
+            },
+            {
+              "name": "Storm Number",
+              "content": "13",
+              "show": false
+            },
+            {
+              "name": "Product Type",
+              "content": "obs",
+              "show": false
+            },
+            {
+              "name": "TDS Download URL",
+              "content": "https://apsviz-thredds-dev.apps.renci.org/thredds/catalog/2023/coamps_13L/2023091100/hsofs/bridges2.psc.edu/nopp_hsofs_coamps_13L/coampsforecast/catalog.html",
+              "show": false
+            }
+          ]
+        },
+        {
+          "id": "4526-2023091100-coampsforecast-maxwvel63",
+          "show": true,
+          "name": "Date: 09-11-2023 Cycle: 00 Type: coampsforecast Location: PSC Instance: nopp_hsofs_coamps_13L ADCIRC Grid: hsofs (maxwvel63)",
+          "description": "This data is produced by the ADCIRC model and presented through the ADCIRC Prediction System Visualizer",
+          "dataCustodian": "RENCI",
+          "styles": "maxwvel_env_style",
+          "layers": "ADCIRC_2023:4526-2023091100-coampsforecast_maxwvel63",
+          "legends": [
+            {
+              "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/ows?service=WMS&request=GetLegendGraphic&TRANSPARENT=TRUE&LEGEND_OPTIONS=layout:horizontal&format=image%2Fpng&width=20&height=20&layer=4526-2023091100-coampsforecast_maxwvel63",
+              "urlMimeType": "image/png"
+            }
+          ],
+          "type": "wms",
+          "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/wms/ADCIRC_2023?service=wms&version=1.3.0&request=GetCapabilities",
+          "featureInfoTemplate": {
+            "template": "<div><b>Value:</b>  {{GRAY_INDEX}}</div>",
+            "formats": {
+              "GRAY_INDEX": {
+                "type": "number",
+                "maximumFractionDigits": 3
+              }
+            }
+          },
+          "info": [
+            {
+              "name": "Advisory",
+              "content": "2023091100",
+              "show": false
+            },
+            {
+              "name": "Cycle",
+              "content": "00",
+              "show": false
+            },
+            {
+              "name": "Ensemble Member",
+              "content": "coampsforecast",
+              "show": false
+            },
+            {
+              "name": "Event Date",
+              "content": "230911",
+              "show": false
+            },
+            {
+              "name": "Event Type",
+              "content": "coampsforecast",
+              "show": false
+            },
+            {
+              "name": "Grid Type",
+              "content": "hsofs",
+              "show": false
+            },
+            {
+              "name": "Instance Name",
+              "content": "nopp_hsofs_coamps_13L",
+              "show": false
+            },
+            {
+              "name": "Location",
+              "content": "PSC",
+              "show": false
+            },
+            {
+              "name": "Meteorological Model",
+              "content": "None",
+              "show": false
+            },
+            {
+              "name": "Storm Name",
+              "content": "LEE",
+              "show": false
+            },
+            {
+              "name": "Storm Number",
+              "content": "13",
+              "show": false
+            },
+            {
+              "name": "Product Type",
+              "content": "maxwvel63",
+              "show": false
+            },
+            {
+              "name": "TDS Download URL",
+              "content": "https://apsviz-thredds-dev.apps.renci.org/thredds/catalog/2023/coamps_13L/2023091100/hsofs/bridges2.psc.edu/nopp_hsofs_coamps_13L/coampsforecast/catalog.html",
+              "show": false
+            }
+          ]
+        },
+        {
+          "id": "4526-2023091100-coampsforecast-maxele63",
+          "show": true,
+          "name": "Date: 09-11-2023 Cycle: 00 Type: coampsforecast Location: PSC Instance: nopp_hsofs_coamps_13L ADCIRC Grid: hsofs (maxele63)",
+          "description": "This data is produced by the ADCIRC model and presented through the ADCIRC Prediction System Visualizer",
+          "dataCustodian": "RENCI",
+          "styles": "maxele_env_style_v2",
+          "layers": "ADCIRC_2023:4526-2023091100-coampsforecast_maxele63",
+          "legends": [
+            {
+              "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/ows?service=WMS&request=GetLegendGraphic&TRANSPARENT=TRUE&LEGEND_OPTIONS=layout:horizontal&format=image%2Fpng&width=20&height=20&layer=4526-2023091100-coampsforecast_maxele63",
+              "urlMimeType": "image/png"
+            }
+          ],
+          "type": "wms",
+          "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/wms/ADCIRC_2023?service=wms&version=1.3.0&request=GetCapabilities",
+          "featureInfoTemplate": {
+            "template": "<div><b>Value:</b>  {{GRAY_INDEX}}</div>",
+            "formats": {
+              "GRAY_INDEX": {
+                "type": "number",
+                "maximumFractionDigits": 3
+              }
+            }
+          },
+          "info": [
+            {
+              "name": "Advisory",
+              "content": "2023091100",
+              "show": false
+            },
+            {
+              "name": "Cycle",
+              "content": "00",
+              "show": false
+            },
+            {
+              "name": "Ensemble Member",
+              "content": "coampsforecast",
+              "show": false
+            },
+            {
+              "name": "Event Date",
+              "content": "230911",
+              "show": false
+            },
+            {
+              "name": "Event Type",
+              "content": "coampsforecast",
+              "show": false
+            },
+            {
+              "name": "Grid Type",
+              "content": "hsofs",
+              "show": false
+            },
+            {
+              "name": "Instance Name",
+              "content": "nopp_hsofs_coamps_13L",
+              "show": false
+            },
+            {
+              "name": "Location",
+              "content": "PSC",
+              "show": false
+            },
+            {
+              "name": "Meteorological Model",
+              "content": "None",
+              "show": false
+            },
+            {
+              "name": "Storm Name",
+              "content": "LEE",
+              "show": false
+            },
+            {
+              "name": "Storm Number",
+              "content": "13",
+              "show": false
+            },
+            {
+              "name": "Product Type",
+              "content": "maxele63",
+              "show": false
+            },
+            {
+              "name": "TDS Download URL",
+              "content": "https://apsviz-thredds-dev.apps.renci.org/thredds/catalog/2023/coamps_13L/2023091100/hsofs/bridges2.psc.edu/nopp_hsofs_coamps_13L/coampsforecast/catalog.html",
+              "show": false
+            }
+          ]
+        },
+        {
+          "id": "4526-2023091100-coampsforecast-swan",
+          "show": true,
+          "name": "Date: 09-11-2023 Cycle: 00 Type: coampsforecast Location: PSC Instance: nopp_hsofs_coamps_13L ADCIRC Grid: hsofs (swan)",
+          "description": "This data is produced by the ADCIRC model and presented through the ADCIRC Prediction System Visualizer",
+          "dataCustodian": "RENCI",
+          "styles": "swan_env_style_v2",
+          "layers": "ADCIRC_2023:4526-2023091100-coampsforecast_swan_HS_max63",
+          "legends": [
+            {
+              "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/ows?service=WMS&request=GetLegendGraphic&TRANSPARENT=TRUE&LEGEND_OPTIONS=layout:horizontal&format=image%2Fpng&width=20&height=20&layer=4526-2023091100-coampsforecast_swan_HS_max63",
+              "urlMimeType": "image/png"
+            }
+          ],
+          "type": "wms",
+          "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/wms/ADCIRC_2023?service=wms&version=1.3.0&request=GetCapabilities",
+          "featureInfoTemplate": {
+            "template": "<div><b>Value:</b>  {{GRAY_INDEX}}</div>",
+            "formats": {
+              "GRAY_INDEX": {
+                "type": "number",
+                "maximumFractionDigits": 3
+              }
+            }
+          },
+          "info": [
+            {
+              "name": "Advisory",
+              "content": "2023091100",
+              "show": false
+            },
+            {
+              "name": "Cycle",
+              "content": "00",
+              "show": false
+            },
+            {
+              "name": "Ensemble Member",
+              "content": "coampsforecast",
+              "show": false
+            },
+            {
+              "name": "Event Date",
+              "content": "230911",
+              "show": false
+            },
+            {
+              "name": "Event Type",
+              "content": "coampsforecast",
+              "show": false
+            },
+            {
+              "name": "Grid Type",
+              "content": "hsofs",
+              "show": false
+            },
+            {
+              "name": "Instance Name",
+              "content": "nopp_hsofs_coamps_13L",
+              "show": false
+            },
+            {
+              "name": "Location",
+              "content": "PSC",
+              "show": false
+            },
+            {
+              "name": "Meteorological Model",
+              "content": "None",
+              "show": false
+            },
+            {
+              "name": "Storm Name",
+              "content": "LEE",
+              "show": false
+            },
+            {
+              "name": "Storm Number",
+              "content": "13",
+              "show": false
+            },
+            {
+              "name": "Product Type",
+              "content": "swan_HS_max63",
+              "show": false
+            },
+            {
+              "name": "TDS Download URL",
+              "content": "https://apsviz-thredds-dev.apps.renci.org/thredds/catalog/2023/coamps_13L/2023091100/hsofs/bridges2.psc.edu/nopp_hsofs_coamps_13L/coampsforecast/catalog.html",
+              "show": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
