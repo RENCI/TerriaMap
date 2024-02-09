@@ -1,0 +1,519 @@
+{
+  "workbench": ["4538-018-ofcl-maxwvel63"],
+  "corsDomains": [
+    "corsproxy.com",
+    "programs.communications.gov.au",
+    "www.asris.csiro.au",
+    "mapsengine.google.com"
+  ],
+  "homeCamera": {
+    "east": -61,
+    "west": -80,
+    "north": 45,
+    "south": 7
+  },
+  "baseMaps": {
+    "items": [
+      {
+        "item": {
+          "id": "basemap-bing-aerial-with-labels",
+          "name": "Bing Maps Aerial with Labels",
+          "type": "bing-maps",
+          "opacity": 1.0,
+          "mapStyle": "AerialWithLabelsOnDemand"
+        },
+        "image": "images/basemaps/us/bing-aerial-labels.png",
+        "contrastColor": "#ffffff"
+      },
+      {
+        "item": {
+          "id": "basemap-bing-aerial",
+          "name": "Bing Maps Aerial",
+          "type": "bing-maps",
+          "opacity": 1.0,
+          "mapStyle": "Aerial"
+        },
+        "image": "images/basemaps/us/bing-aerial.png",
+        "contrastColor": "#ffffff"
+      },
+      {
+        "item": {
+          "id": "basemap-bing-roads",
+          "name": "Bing Maps Roads",
+          "type": "bing-maps",
+          "opacity": 1.0,
+          "mapStyle": "RoadOnDemand"
+        },
+        "image": "images/basemaps/us/bing-maps-roads.png",
+        "contrastColor": "#000000"
+      },
+      {
+        "item": {
+          "id": "basemap-natural-earth-II",
+          "url": "https://storage.googleapis.com/terria-datasets-public/basemaps/natural-earth-tiles/{z}/{x}/{reverseY}.png",
+          "name": "Natural Earth II",
+          "type": "url-template-imagery",
+          "opacity": 1.0,
+          "attribution": "<a href='https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-2/'>Natural Earth II</a> - From Natural Earth. <a href='https://www.naturalearthdata.com/about/terms-of-use/'>Public Domain</a>.",
+          "maximumLevel": 7
+        },
+        "image": "images/basemaps/us/natural-earth.png",
+        "contrastColor": "#000000"
+      },
+      {
+        "item": {
+          "id": "basemap-black-marble",
+          "url": "http://geoserver.nationalmap.nicta.com.au/imagery/nasa-black-marble/wms",
+          "name": "NASA Black Marble",
+          "type": "wms",
+          "layers": "nasa-black-marble:dnb_land_ocean_ice.2012.54000x27000_geo",
+          "opacity": 1.0,
+          "attribution": "<a href='https://earthobservatory.nasa.gov/Features/NightLights'>Black Marble</a> - From NASA's Earth Observatory. <a href='https://earthobservatory.nasa.gov/image-use-policy'>Use Policy</a>."
+        },
+        "image": "images/basemaps/us/black-marble.png",
+        "contrastColor": "#ffffff"
+      },
+      {
+        "item": {
+          "id": "basemap-positron",
+          "url": "https://basemaps.cartocdn.com/light_all/",
+          "name": "Positron (Light)",
+          "type": "open-street-map",
+          "opacity": 1.0,
+          "subdomains": ["a", "b", "c", "d"],
+          "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>, © <a href='https://carto.com/about-carto/'>CARTO</a>"
+        },
+        "image": "images/basemaps/us/positron.png",
+        "contrastColor": "#000000"
+      },
+      {
+        "item": {
+          "id": "basemap-darkmatter",
+          "url": "https://basemaps.cartocdn.com/dark_all/",
+          "name": "Dark Matter",
+          "type": "open-street-map",
+          "opacity": 1.0,
+          "subdomains": ["a", "b", "c", "d"],
+          "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>, © <a href='https://carto.com/about-carto/'>CARTO</a>"
+        },
+        "image": "images/basemaps/us/dark-matter.png",
+        "contrastColor": "#ffffff"
+      }
+    ],
+    "defaultBaseMapId": "basemap-bing-roads"
+  },
+  "viewerMode": "2D",
+  "catalog": [
+    {
+      "id": "2023-08-31",
+      "name": "ADCIRC Data - Run Date: 08-31-2023",
+      "type": "group",
+      "members": [
+        {
+          "id": "4538-018-ofcl-maxwvel63",
+          "show": true,
+          "name": "Date: 08-31-2023 Storm Name: IDALIA(10) Advisory:018 Type: ofcl Location: RENCI Instance: ec95d_dev_da_idalia ADCIRC Grid: ec95d (maxwvel63)",
+          "description": "This data is produced by the ADCIRC model and presented through the ADCIRC Prediction System Visualizer",
+          "dataCustodian": "RENCI",
+          "styles": "maxwvel_env_style",
+          "layers": "ADCIRC_2023:4538-018-ofcl_maxwvel63",
+          "legends": [
+            {
+              "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/ows?service=WMS&request=GetLegendGraphic&TRANSPARENT=TRUE&LEGEND_OPTIONS=layout:horizontal&format=image%2Fpng&width=20&height=20&layer=4538-018-ofcl_maxwvel63",
+              "urlMimeType": "image/png"
+            }
+          ],
+          "type": "wms",
+          "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/wms/ADCIRC_2023?service=wms&version=1.3.0&request=GetCapabilities",
+          "featureInfoTemplate": {
+            "template": "<div><b>Value:</b>  {{GRAY_INDEX}}</div>",
+            "formats": {
+              "GRAY_INDEX": {
+                "type": "number",
+                "maximumFractionDigits": 3
+              }
+            }
+          },
+          "info": [
+            {
+              "name": "Advisory",
+              "content": "018",
+              "show": false
+            },
+            {
+              "name": "Cycle",
+              "content": "00",
+              "show": false
+            },
+            {
+              "name": "Ensemble Member",
+              "content": "ofcl",
+              "show": false
+            },
+            {
+              "name": "Event Date",
+              "content": "230831",
+              "show": false
+            },
+            {
+              "name": "Event Type",
+              "content": "ofcl",
+              "show": false
+            },
+            {
+              "name": "Grid Type",
+              "content": "ec95d",
+              "show": false
+            },
+            {
+              "name": "Instance Name",
+              "content": "ec95d_dev_da_idalia",
+              "show": false
+            },
+            {
+              "name": "Location",
+              "content": "RENCI",
+              "show": false
+            },
+            {
+              "name": "Meteorological Model",
+              "content": "GAHM",
+              "show": false
+            },
+            {
+              "name": "Storm Name",
+              "content": "IDALIA",
+              "show": false
+            },
+            {
+              "name": "Storm Number",
+              "content": "10",
+              "show": false
+            },
+            {
+              "name": "Product Type",
+              "content": "maxwvel63",
+              "show": false
+            },
+            {
+              "name": "TDS Download URL",
+              "content": "https://apsviz-thredds-dev.apps.renci.org/thredds/catalog/2023/al10/18/ec95d/ht-ncfs.renci.org/ec95d_dev_da_idalia/ofcl/catalog.html",
+              "show": false
+            },
+            {
+              "name": "Model",
+              "content": "adcirc",
+              "show": false
+            }
+          ]
+        },
+        {
+          "id": "4538-018-ofcl-maxele63",
+          "show": true,
+          "name": "Date: 08-31-2023 Storm Name: IDALIA(10) Advisory:018 Type: ofcl Location: RENCI Instance: ec95d_dev_da_idalia ADCIRC Grid: ec95d (maxele63)",
+          "description": "This data is produced by the ADCIRC model and presented through the ADCIRC Prediction System Visualizer",
+          "dataCustodian": "RENCI",
+          "styles": "maxele_env_style_v2",
+          "layers": "ADCIRC_2023:4538-018-ofcl_maxele63",
+          "legends": [
+            {
+              "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/ows?service=WMS&request=GetLegendGraphic&TRANSPARENT=TRUE&LEGEND_OPTIONS=layout:horizontal&format=image%2Fpng&width=20&height=20&layer=4538-018-ofcl_maxele63",
+              "urlMimeType": "image/png"
+            }
+          ],
+          "type": "wms",
+          "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/wms/ADCIRC_2023?service=wms&version=1.3.0&request=GetCapabilities",
+          "featureInfoTemplate": {
+            "template": "<div><b>Value:</b>  {{GRAY_INDEX}}</div>",
+            "formats": {
+              "GRAY_INDEX": {
+                "type": "number",
+                "maximumFractionDigits": 3
+              }
+            }
+          },
+          "info": [
+            {
+              "name": "Advisory",
+              "content": "018",
+              "show": false
+            },
+            {
+              "name": "Cycle",
+              "content": "00",
+              "show": false
+            },
+            {
+              "name": "Ensemble Member",
+              "content": "ofcl",
+              "show": false
+            },
+            {
+              "name": "Event Date",
+              "content": "230831",
+              "show": false
+            },
+            {
+              "name": "Event Type",
+              "content": "ofcl",
+              "show": false
+            },
+            {
+              "name": "Grid Type",
+              "content": "ec95d",
+              "show": false
+            },
+            {
+              "name": "Instance Name",
+              "content": "ec95d_dev_da_idalia",
+              "show": false
+            },
+            {
+              "name": "Location",
+              "content": "RENCI",
+              "show": false
+            },
+            {
+              "name": "Meteorological Model",
+              "content": "GAHM",
+              "show": false
+            },
+            {
+              "name": "Storm Name",
+              "content": "IDALIA",
+              "show": false
+            },
+            {
+              "name": "Storm Number",
+              "content": "10",
+              "show": false
+            },
+            {
+              "name": "Product Type",
+              "content": "maxele63",
+              "show": false
+            },
+            {
+              "name": "TDS Download URL",
+              "content": "https://apsviz-thredds-dev.apps.renci.org/thredds/catalog/2023/al10/18/ec95d/ht-ncfs.renci.org/ec95d_dev_da_idalia/ofcl/catalog.html",
+              "show": false
+            },
+            {
+              "name": "Model",
+              "content": "adcirc",
+              "show": false
+            }
+          ]
+        },
+        {
+          "id": "4535-018-ofcl-maxele63",
+          "show": true,
+          "name": "Date: 08-31-2023 Storm Name: IDALIA(10) Advisory:018 Type: ofcl Location: RENCI Instance: ec95d_dev_da_idalia ADCIRC Grid: ec95d (maxele63)",
+          "description": "This data is produced by the ADCIRC model and presented through the ADCIRC Prediction System Visualizer",
+          "dataCustodian": "RENCI",
+          "styles": "maxele_env_style_v2",
+          "layers": "ADCIRC_2023:4535-018-ofcl_maxele63",
+          "legends": [
+            {
+              "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/ows?service=WMS&request=GetLegendGraphic&TRANSPARENT=TRUE&LEGEND_OPTIONS=layout:horizontal&format=image%2Fpng&width=20&height=20&layer=4535-018-ofcl_maxele63",
+              "urlMimeType": "image/png"
+            }
+          ],
+          "type": "wms",
+          "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/wms/ADCIRC_2023?service=wms&version=1.3.0&request=GetCapabilities",
+          "featureInfoTemplate": {
+            "template": "<div><b>Value:</b>  {{GRAY_INDEX}}</div>",
+            "formats": {
+              "GRAY_INDEX": {
+                "type": "number",
+                "maximumFractionDigits": 3
+              }
+            }
+          },
+          "info": [
+            {
+              "name": "Advisory",
+              "content": "018",
+              "show": false
+            },
+            {
+              "name": "Cycle",
+              "content": "00",
+              "show": false
+            },
+            {
+              "name": "Ensemble Member",
+              "content": "ofcl",
+              "show": false
+            },
+            {
+              "name": "Event Date",
+              "content": "230831",
+              "show": false
+            },
+            {
+              "name": "Event Type",
+              "content": "ofcl",
+              "show": false
+            },
+            {
+              "name": "Grid Type",
+              "content": "ec95d",
+              "show": false
+            },
+            {
+              "name": "Instance Name",
+              "content": "ec95d_dev_da_idalia",
+              "show": false
+            },
+            {
+              "name": "Location",
+              "content": "RENCI",
+              "show": false
+            },
+            {
+              "name": "Meteorological Model",
+              "content": "GAHM",
+              "show": false
+            },
+            {
+              "name": "Storm Name",
+              "content": "IDALIA",
+              "show": false
+            },
+            {
+              "name": "Storm Number",
+              "content": "10",
+              "show": false
+            },
+            {
+              "name": "Product Type",
+              "content": "maxele63",
+              "show": false
+            },
+            {
+              "name": "TDS Download URL",
+              "content": "https://apsviz-thredds-dev.apps.renci.org/thredds/catalog/2023/al10/18/ec95d/ht-ncfs.renci.org/ec95d_dev_da_idalia/ofcl/catalog.html",
+              "show": false
+            },
+            {
+              "name": "Model",
+              "content": "adcirc",
+              "show": false
+            }
+          ]
+        },
+        {
+          "id": "4535-018-ofcl-maxwvel63",
+          "show": true,
+          "name": "Date: 08-31-2023 Storm Name: IDALIA(10) Advisory:018 Type: ofcl Location: RENCI Instance: ec95d_dev_da_idalia ADCIRC Grid: ec95d (maxwvel63)",
+          "description": "This data is produced by the ADCIRC model and presented through the ADCIRC Prediction System Visualizer",
+          "dataCustodian": "RENCI",
+          "styles": "maxwvel_env_style",
+          "layers": "ADCIRC_2023:4535-018-ofcl_maxwvel63",
+          "legends": [
+            {
+              "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/ows?service=WMS&request=GetLegendGraphic&TRANSPARENT=TRUE&LEGEND_OPTIONS=layout:horizontal&format=image%2Fpng&width=20&height=20&layer=4535-018-ofcl_maxwvel63",
+              "urlMimeType": "image/png"
+            }
+          ],
+          "type": "wms",
+          "url": "https://apsviz-geoserver-dev.apps.renci.org/geoserver/ADCIRC_2023/wms/ADCIRC_2023?service=wms&version=1.3.0&request=GetCapabilities",
+          "featureInfoTemplate": {
+            "template": "<div><b>Value:</b>  {{GRAY_INDEX}}</div>",
+            "formats": {
+              "GRAY_INDEX": {
+                "type": "number",
+                "maximumFractionDigits": 3
+              }
+            }
+          },
+          "info": [
+            {
+              "name": "Advisory",
+              "content": "018",
+              "show": false
+            },
+            {
+              "name": "Cycle",
+              "content": "00",
+              "show": false
+            },
+            {
+              "name": "Ensemble Member",
+              "content": "ofcl",
+              "show": false
+            },
+            {
+              "name": "Event Date",
+              "content": "230831",
+              "show": false
+            },
+            {
+              "name": "Event Type",
+              "content": "ofcl",
+              "show": false
+            },
+            {
+              "name": "Grid Type",
+              "content": "ec95d",
+              "show": false
+            },
+            {
+              "name": "Instance Name",
+              "content": "ec95d_dev_da_idalia",
+              "show": false
+            },
+            {
+              "name": "Location",
+              "content": "RENCI",
+              "show": false
+            },
+            {
+              "name": "Meteorological Model",
+              "content": "GAHM",
+              "show": false
+            },
+            {
+              "name": "Storm Name",
+              "content": "IDALIA",
+              "show": false
+            },
+            {
+              "name": "Storm Number",
+              "content": "10",
+              "show": false
+            },
+            {
+              "name": "Product Type",
+              "content": "maxwvel63",
+              "show": false
+            },
+            {
+              "name": "TDS Download URL",
+              "content": "https://apsviz-thredds-dev.apps.renci.org/thredds/catalog/2023/al10/18/ec95d/ht-ncfs.renci.org/ec95d_dev_da_idalia/ofcl/catalog.html",
+              "show": false
+            },
+            {
+              "name": "Model",
+              "content": "adcirc",
+              "show": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pulldown_data": {
+    "met_class": "tropical",
+    "grid_types": ["ec95d"],
+    "event_types": ["ofcl"],
+    "instance_names": ["ec95d_dev_da_idalia"],
+    "storm_names": ["IDALIA"],
+    "cycles": ["018"],
+    "advisory_numbers": ["018"],
+    "product_codes": ["test"],
+    "product_types": ["maxele63", "maxwvel63"],
+    "run_dates": ["2023-08-31"]
+  }
+}
