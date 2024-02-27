@@ -352,7 +352,7 @@ index 0000000..834025a
 +
 +export default withTranslation()(ChartExpandAndDownloadButtons);
 diff --git a/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons.tsx b/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons.tsx
-index f33bf94..0ebb427 100644
+index f33bf94..037a10f 100644
 --- a/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons.tsx
 +++ b/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons.tsx
 @@ -2,7 +2,7 @@ import classNames from "classnames";
@@ -364,11 +364,12 @@ index f33bf94..0ebb427 100644
  import { WithTranslation, withTranslation } from "react-i18next";
  import filterOutUndefined from "../../../Core/filterOutUndefined";
  import ChartableMixin from "../../../ModelMixins/ChartableMixin";
-@@ -11,9 +11,10 @@ import Terria from "../../../Models/Terria";
+@@ -11,9 +11,11 @@ import Terria from "../../../Models/Terria";
  import Icon from "../../../Styled/Icon";
  import UrlTraits from "../../../Traits/TraitsClasses/UrlTraits";
  import Styles from "./chart-expand-and-download-buttons.scss";
 -
++import ChartView from "terriajs/lib/Charts/ChartView";
 +import { useLayout } from "../../../../../../lib/custom-ui/components/layout";
 +import { useLayers } from "../../../../../../lib/custom-ui/context";
 +import { useViewState } from "terriajs/lib/ReactViews/StandardUserInterface/ViewStateContext";
@@ -377,7 +378,7 @@ index f33bf94..0ebb427 100644
  interface PropsType extends WithTranslation {
    terria: Terria;
    sourceItems: Promise<ChartableMixin.Instance | undefined>[]; // Array of items or Promise returning item
-@@ -24,21 +25,17 @@ interface PropsType extends WithTranslation {
+@@ -24,21 +26,17 @@ interface PropsType extends WithTranslation {
    raiseToTitle: boolean;
    t: TFunction;
  }
@@ -399,7 +400,7 @@ index f33bf94..0ebb427 100644
    /**
     * Expand sourceIndex item by adding it to the workbench.
     *
-@@ -47,7 +44,6 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
+@@ -47,7 +45,6 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
     */
    private expandItem(sourceIndex: number) {
      const terria = this.props.terria;
@@ -407,7 +408,7 @@ index f33bf94..0ebb427 100644
      runInAction(async () => {
        const sourceItems = this.sourceItems;
        const itemToExpand = sourceItems[sourceIndex];
-@@ -55,7 +51,6 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
+@@ -55,7 +52,6 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
        if (!itemToExpand) {
          return;
        }
@@ -415,12 +416,23 @@ index f33bf94..0ebb427 100644
        // We want to show only one source item at a time, so remove any
        // existing source items from the workbench
        sourceItems.forEach((sourceItem) => {
-@@ -65,14 +60,24 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
+@@ -65,14 +61,35 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
            }
          });
        });
 -
        try {
++        
++        // let csvLayers = this.props.terria.workbench.items.map((layer: any) => {
++        //   if (layer.type === "csv") {
++        //     return layer;
++        //   }
++        // });
++        // csvLayers.forEach((layer: any, i) => {
++        //   if (i > 0) {
++        //     this.props.terria.workbench.remove(layer);
++        //   }
++        // })
          terria.addModel(itemToExpand);
 -      } catch {}
 +      } catch { }
@@ -443,7 +455,7 @@ index f33bf94..0ebb427 100644
    resolveSourceItems() {
      Promise.all(
        this.props.sourceItems.map((sourceItem) => Promise.resolve(sourceItem))
-@@ -82,30 +87,25 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
+@@ -82,30 +99,25 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
        })
      );
    }
@@ -477,7 +489,7 @@ index f33bf94..0ebb427 100644
      const { sourceNames, canDownload, raiseToTitle, t } = this.props;
      if (sourceNames && sourceNames.length > 0) {
        const downloadNames = this.props.downloadNames || sourceNames;
-@@ -123,7 +123,6 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
+@@ -123,7 +135,6 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
          />
        );
      }
@@ -485,7 +497,7 @@ index f33bf94..0ebb427 100644
      return (
        <ExpandAndDownloadButtons
          onExpand={this.expandButton}
-@@ -135,7 +134,6 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
+@@ -135,7 +146,6 @@ class ChartExpandAndDownloadButtons extends React.Component<PropsType> {
      );
    }
  }
@@ -493,7 +505,7 @@ index f33bf94..0ebb427 100644
  const ExpandAndDownloadDropdowns = function (props: {
    sourceNames: string[];
    canDownload: boolean;
-@@ -150,12 +148,10 @@ const ExpandAndDownloadDropdowns = function (props: {
+@@ -150,12 +160,10 @@ const ExpandAndDownloadDropdowns = function (props: {
      button: Styles.dropdownBtn,
      btnOption: Styles.dropdownBtnOption
    };
@@ -506,7 +518,7 @@ index f33bf94..0ebb427 100644
    return (
      <div
        className={classNames(Styles.chartExpand, {
-@@ -179,12 +175,37 @@ const ExpandAndDownloadDropdowns = function (props: {
+@@ -179,12 +187,56 @@ const ExpandAndDownloadDropdowns = function (props: {
      </div>
    );
  };
@@ -521,31 +533,50 @@ index f33bf94..0ebb427 100644
 +  const { activatedLayer,
 +    currentTabIndex,
 +    setActivatedLayer,
-+    setCurrentTabIndex }: any = useLayers();
++    setCurrentTabIndex,
++    setChartItems }: any = useLayers();
++
 +  useEffect(() => {
 +    if (drawerIsOpen == false) {
-+      setActivatedLayer(viewState.terria.workbench.items[0])
 +      openDrawer()
-+    } else {
-+      setActivatedLayer(viewState.terria.workbench.items[0])
 +    }
 +    if (currentTabIndex == 0) {
 +      setCurrentTabIndex(2)
 +      setTimeout(function afterTwoSeconds() {
 +        setCurrentTabIndex(1)
-+      }, 100)
++      }, 400)
++      const csvType: any = viewState.terria.workbench.items.find((element) => element.type == "csv");
++      const chartView = new ChartView(viewState.terria);
++      const chartItems = chartView.chartItems;
++      setChartItems(chartItems)
++      setActivatedLayer(csvType)
 +    } else {
++      // let csvLayers = viewState.terria.workbench.items.map((layer) => {
++      //   if (layer.type === "csv") {
++      //     return layer;
++      //   }
++      // });
++      // csvLayers.forEach((layer: any, i) => {
++      //   if (i > 0) {
++      //     viewState.terria.workbench.remove(layer);
++      //   }
++      // });
 +      setCurrentTabIndex(0)
 +      setTimeout(function afterTwoSeconds() {
 +        setCurrentTabIndex(1)
-+      }, 100)
++      }, 400)
++      const csvType: any = viewState.terria.workbench.items.find((element) => element.type == "csv");
++      const chartView = new ChartView(viewState.terria);
++      const chartItems = chartView.chartItems;
++      setChartItems(chartItems)
++      setActivatedLayer(csvType)
 +    }
 +  }, []);
 +  props.onExpand()
    return (
      <div className={Styles.chartExpand}>
        <button
-@@ -206,5 +227,4 @@ const ExpandAndDownloadButtons = function (props: {
+@@ -206,5 +258,4 @@ const ExpandAndDownloadButtons = function (props: {
      </div>
    );
  };
