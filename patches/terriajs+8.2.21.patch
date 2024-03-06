@@ -103,34 +103,10 @@ index d8f0f0b..25ebd57 100644
      if (mouseEvent.latlng.lng > 180 || mouseEvent.latlng.lng < -180) {
        mouseEvent.latlng = mouseEvent.latlng.wrap();
 diff --git a/node_modules/terriajs/lib/Models/Terria.ts b/node_modules/terriajs/lib/Models/Terria.ts
-index f465a0d..65e6e16 100644
+index f465a0d..cf5ba9c 100644
 --- a/node_modules/terriajs/lib/Models/Terria.ts
 +++ b/node_modules/terriajs/lib/Models/Terria.ts
-@@ -110,6 +110,10 @@ import TimelineStack from "./TimelineStack";
- import { isViewerMode, setViewerMode } from "./ViewerMode";
- import Workbench from "./Workbench";
- import SelectableDimensionWorkflow from "./Workflows/SelectableDimensionWorkflow";
-+import { addStormLayers } from "../../../../lib/custom-ui/components/utils/storm-layers.js"
-+import { useViewState } from "terriajs/lib/ReactViews/StandardUserInterface/ViewStateContext";
-+
-+
- 
- // import overrides from "../Overrides/defaults.jsx";
- 
-@@ -1579,9 +1583,12 @@ export default class Terria {
- 
-     // Add catalog members
-     if (initData.catalog !== undefined) {
-+      // console.log(initData.catalog)
-       this.catalog.group
-         .addMembersFromJson(stratumId, initData.catalog)
-         .pushErrorTo(errors);
-+
-+        console.log(this.workbench.items)
-     }
- 
-     // Show/hide elements in mapNavigationModel
-@@ -1701,6 +1708,7 @@ export default class Terria {
+@@ -1701,6 +1701,7 @@ export default class Terria {
      // Set the new contents of the workbench.
      const newItemsRaw = filterOutUndefined(
        workbench.map((modelId) => {
@@ -138,31 +114,6 @@ index f465a0d..65e6e16 100644
          if (typeof modelId !== "string") {
            errors.push(
              new TerriaError({
-@@ -1729,6 +1737,24 @@ export default class Terria {
- 
-     runInAction(() => (this.workbench.items = newItems));
- 
-+    
-+
-+    // this.workbench.items.forEach((item) => {
-+    //   // look for storm layers
-+    //   // right now base identification on length of Advisory
-+    //   // length should be 3 or less if it is a storm layer
-+    //   if (
-+    //     item.infoAsObject.Advisory &&
-+    //     item.infoAsObject.Advisory.length < 4
-+    //   ) {
-+    //     // now add storm layers associated with this storm, date and advisory
-+    //     // addStormLayers(item);
-+    //     // console.log(viewState)
-+        
-+    //   }
-+      
-+    // })
-+
-     // For ids that don't correspond to models resolve an id by share keys
-     const timelineWithShareKeysResolved = new Set(
-       filterOutUndefined(
 diff --git a/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons copy.tsx b/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons copy.tsx
 new file mode 100644
 index 0000000..834025a
