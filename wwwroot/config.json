@@ -1,6 +1,6 @@
 {
   "initializationUrls": [
-    "https://apsviz-ui-data-dev.apps.renci.org/get_ui_data_file?file_name=apsviz2.json"
+    "https://apsviz-ui-data.apps.renci.org/get_ui_data_file?file_name=apsviz2.json"
   ],
   "parameters": {
     "bingMapsKey": "AonD5sr-4zO6vqCNY-RMerq7qOLMOFDd1BsYZbGdZLE9zP3lbGLsX-BVwH8dTqxh",
@@ -156,7 +156,7 @@
       }
     ],
     "plugins": {
-      "dataFilterURL": "https://apsviz-ui-data-dev.apps.renci.org/get_ui_data?",
+      "dataFilterURL": "https://apsviz-ui-data.apps.renci.org/get_ui_data?",
       "hurricaneIconsURL": "https://apsviz-fileserver-dev.apps.renci.org/terria-map/icons/",
       "bannerImages": ["images/aps-logo.png", "images/nopp-logo.png"],
       "attributionImages": [
