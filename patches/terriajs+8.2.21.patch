@@ -115,7 +115,7 @@ index f465a0d..cf5ba9c 100644
            errors.push(
              new TerriaError({
 diff --git a/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons.tsx b/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons.tsx
-index f33bf94..26994c6 100644
+index f33bf94..4fe82fa 100644
 --- a/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons.tsx
 +++ b/node_modules/terriajs/lib/ReactViews/Custom/Chart/ChartExpandAndDownloadButtons.tsx
 @@ -2,7 +2,7 @@ import classNames from "classnames";
@@ -304,7 +304,7 @@ index f33bf94..26994c6 100644
 +      openDrawer()
 +    }
 +    if (currentTabIndex == 0) {
-+      //setCurrentTabIndex(2)
++      setCurrentTabIndex(2)
 +      setTimeout(function afterTwoSeconds() {
 +        setCurrentTabIndex(1)
 +      }, 400)
@@ -324,7 +324,7 @@ index f33bf94..26994c6 100644
 +      //     viewState.terria.workbench.remove(layer);
 +      //   }
 +      // });
-+      //setCurrentTabIndex(0)
++      setCurrentTabIndex(0)
 +      setTimeout(function afterTwoSeconds() {
 +        setCurrentTabIndex(1)
 +      }, 400)
