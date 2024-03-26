@@ -90,6 +90,41 @@ index 5c557f5..51fbbcb 100644
              width:
                properties && properties["marker-width"]
                  ? new ConstantProperty(properties["marker-width"])
+diff --git a/node_modules/terriajs/lib/ModelMixins/TableMixin.ts b/node_modules/terriajs/lib/ModelMixins/TableMixin.ts
+index d60f9d8..a060857 100644
+--- a/node_modules/terriajs/lib/ModelMixins/TableMixin.ts
++++ b/node_modules/terriajs/lib/ModelMixins/TableMixin.ts
+@@ -392,6 +392,16 @@ function TableMixin<T extends Constructor<Model<TableTraits>>>(Base: T) {
+ 
+           const colorId = `color-${this.uniqueId}-${this.name}-${yColumn.name}`;
+ 
++          // get the last 7 chars of the colorId
++          const var_type = colorId.slice(-7)
++          // map all the known ADCIRC variable types to colors
++          let adcirc_map = new Map()
++          adcirc_map.set("vations", "#66c2a5") // or #007D34 green
++          adcirc_map.set("ictions", "#FF6800") // orange
++          adcirc_map.set("Nowcast", "#A6BDD7") // or #8da0cb blue
++          adcirc_map.set("orecast", "#E78AC3") // purple
++          adcirc_map.set("PS-OBS)", "#FFD92F") // or #93AA00 yellow
++
+           return {
+             item: this,
+             name: line.name ?? yColumn.title,
+@@ -415,7 +425,12 @@ function TableMixin<T extends Constructor<Model<TableTraits>>>(Base: T) {
+               });
+             },
+             getColor: () => {
+-              return line.color || getChartColorForId(colorId);
++              // if the last 7 chars are in the ADCIRC vars map, use
++              // that - otherwise use normal terriajs method
++              if (adcirc_map.has(var_type))
++                return line.color || adcirc_map.get(var_type);
++              else
++                return line.color || getChartColorForId(colorId);;
+             },
+             pointOnMap: isLatLonHeight(this.chartPointOnMap)
+               ? this.chartPointOnMap
 diff --git a/node_modules/terriajs/lib/Models/Leaflet.ts b/node_modules/terriajs/lib/Models/Leaflet.ts
 index d8f0f0b..25ebd57 100644
 --- a/node_modules/terriajs/lib/Models/Leaflet.ts
