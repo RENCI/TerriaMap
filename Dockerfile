@@ -1,6 +1,3 @@
-# develop container
-FROM node:14 as develop
-
 # build container
 FROM node:14 as build
 USER node
